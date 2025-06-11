@@ -25,6 +25,16 @@
   --rh-card-hover-shadow-light: 0 6px 18px #e91e6335;
   --rh-card-hover-shadow-dark: 0 10px 18px #2e482233;
   --rh-focus-shadow: 0 4px 16px #e91e6320;
+
+  /* Gradient stops (can be overridden per theme) */
+  --rh-gradient-1: #E91E63;
+  --rh-gradient-2: #FFF3E0;
+  --rh-gradient-3: #FFD6E6;
+  --rh-gradient-4: #F06292;
+  --rh-gradient-dark-1: #E91E63;
+  --rh-gradient-dark-2: #23201d;
+  --rh-gradient-dark-3: #470045;
+  --rh-gradient-dark-4: #F06292;
 }
 
 /* Theme mode toggler. Add .rh-theme-dark or .rh-theme-light to <html> or main container */
@@ -46,6 +56,12 @@
   --rh-input-color: var(--rh-text-main);
   --rh-search-btn-bg: var(--rh-primary);
   --rh-search-btn-color: #fff;
+
+  --rh-bg-gradient: linear-gradient(135deg,
+    var(--rh-gradient-1) 0%,
+    var(--rh-gradient-3) 33%,
+    var(--rh-gradient-2) 100%
+  );
 }
 .rh-theme-dark, .rh-theme-dark body {
   --rh-bg: var(--rh-bg-dark);
@@ -65,13 +81,19 @@
   --rh-input-color: var(--rh-text-dark-main);
   --rh-search-btn-bg: var(--rh-primary-dark);
   --rh-search-btn-color: #21201a;
+  --rh-bg-gradient: linear-gradient(135deg,
+    var(--rh-gradient-dark-1) 0%,
+    var(--rh-gradient-dark-3) 42%,
+    var(--rh-gradient-dark-2) 100%
+  );
 }
 
 /*--------------------*/
 
 
 .rh-container {
-  background: var(--rh-bg);
+  /* Use visually engaging gradient as background */
+  background: var(--rh-bg-gradient);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
