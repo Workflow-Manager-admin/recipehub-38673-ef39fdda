@@ -1,0 +1,200 @@
+.rh-container {
+  background: #FFF3E0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: system-ui, Arial, Helvetica, sans-serif;
+}
+
+.rh-header {
+  padding: 1.5rem 1rem 1rem 1rem;
+  background: #FF7043;
+  color: #fff;
+  text-align: left;
+}
+
+.rh-header h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.rh-search-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #FFF;
+  border-radius: 1.5rem;
+  margin: 1rem auto 0.5rem auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px #ed6c0219;
+}
+
+.rh-search-bar input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 0.75em;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  color: #213547;
+}
+
+.rh-search-btn {
+  background: #FF7043;
+  color: #fff;
+  border: none;
+  border-radius: 1.2em;
+  padding: 0.45rem 0.7rem;
+  margin-left: 0.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+.rh-search-btn:hover {
+  background: #388E3C;
+}
+
+.rh-categories {
+  overflow-x: auto;
+  padding: 0.7rem 0.5rem 0 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.rh-categories-scroll {
+  display: flex;
+  gap: 0.7rem;
+}
+.rh-category {
+  background: #FFF3E0;
+  border: 1px solid #FF7043;
+  color: #FF7043;
+  border-radius: 100px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.rh-category:hover, .rh-category.selected {
+  background: #FF7043;
+  color: #fff;
+}
+
+.rh-recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 1.15rem;
+  padding: 1rem 1.1rem 4.2rem 1.1rem;
+  flex: 1 1 auto;
+}
+
+.rh-recipe-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 9px #ed6c0233;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.11s;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+.rh-recipe-card:active, .rh-recipe-card:focus {
+  transform: scale(0.98);
+  box-shadow: 0 4px 16px #388e3c25;
+}
+.rh-recipe-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.rh-recipe-info {
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rh-recipe-info h3 {
+  margin: 0 0 0.3rem 0;
+  font-weight: 500;
+  font-size: 1.07rem;
+}
+.rh-meta {
+  font-size: 0.94rem;
+  color: #FF7043;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.rh-category-label {
+  background: #FFF3E0;
+  border-radius: 7px;
+  padding: 0.08em 0.65em;
+  font-size: 0.9em;
+  border: 1px solid #FF7043;
+}
+
+/* Bottom Navigation Bar */
+.rh-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  background: #fff;
+  border-top: 2px solid #FF7043;
+  box-shadow: 0 -1px 12px #ff704330;
+  padding: 0.27rem 0 0.3rem 0;
+  height: 56px;
+}
+.rh-nav-item {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0.2rem 0;
+  color: #FF7043;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.16s;
+  cursor: pointer;
+}
+.rh-nav-active,
+.rh-nav-item:active,
+.rh-nav-item:focus {
+  color: #388E3C;
+}
+.rh-nav-item .material-symbols-outlined {
+  font-size: 1.6rem;
+  margin-bottom: 0.08em;
+}
+
+/* Utility: Material Symbols fallback */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .rh-recipe-grid {grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));}
+  .rh-header h1 {font-size: 1.33rem;}
+}
