@@ -309,7 +309,9 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 1.15rem;
-  padding: 1rem 1.1rem 4.2rem 1.1rem;
+  /* Add more horizontal padding for space near left/right screen edges */
+  padding: 1rem 6vw 4.2rem 6vw;
+  /* 6vw adds responsive horizontal space – adjust to taste for mobile/desktop */
   flex: 1 1 auto;
 }
 
