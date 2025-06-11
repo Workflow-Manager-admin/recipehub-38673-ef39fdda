@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="width:100vw;height:100vh;box-sizing:border-box;background: linear-gradient(135deg, #E91E63 0%, #FFD6E6 33%, #FFF3E0 100%);margin:0;padding:0;">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -7,8 +7,20 @@
     <title>RecipeHub</title>
     <!-- Material Symbols (Google Fonts) for icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+      html, body {
+        width: 100vw;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #E91E63 0%, #FFD6E6 33%, #FFF3E0 100%);
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      /* Resets and ensures no blank out at top/sides for all devices */
+    </style>
   </head>
-  <body>
+  <body style="min-height:100vh;width:100vw;box-sizing:border-box;margin:0;padding:0;">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

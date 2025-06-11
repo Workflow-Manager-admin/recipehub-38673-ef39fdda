@@ -1,6 +1,89 @@
 /*--------------------*/
-/* RecipeHub Theme    */
+/* Full-Viewport CSS Reset for Edge-to-Edge UI */
 /*--------------------*/
+
+/* Universal Reset: Remove default margin/padding, box-sizing */
+html, body, #app, main, .rh-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Remove scrollbars due to horizontal overflow on body/html */
+html, body {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure #app resets width/height and has no padding/margin */
+#app {
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* .rh-container (main app container) fills the viewport */
+.rh-container {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* Visually engaging gradient as background */
+  background: var(--rh-bg-gradient);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* Make sure header, grid, nav use full width */
+.rh-header,
+.rh-bottom-nav,
+.rh-recipe-grid,
+.rh-categories {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rh-header {
+  /* Retain padding at top for spatial structure, but reset left/right */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Recipe grid padding only on Y axis, not left/right */
+.rh-recipe-grid {
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+}
+
+/* Categories strip aligns fully */
+.rh-categories {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Ensure no whitespace at very top/bottom on mobile or desktop */
+body, html {
+  background: var(--rh-bg-gradient);
+}
+
+/* Further fix for mobile browsers "safe area"/scrollbar overlays (prevents gap on the right) */
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
 
 /* Light/dark theme root variable definitions */
 :root {
