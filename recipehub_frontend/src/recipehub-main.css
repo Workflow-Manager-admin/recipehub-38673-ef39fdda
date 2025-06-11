@@ -4,8 +4,8 @@
 
 /* Light/dark theme root variable definitions */
 :root {
-  --rh-primary: #FF7043;
-  --rh-primary-dark: #ff8962;
+  --rh-primary: #E91E63;
+  --rh-primary-dark: #F06292;
   --rh-secondary: #FFF3E0;
   --rh-secondary-dark: #2c2723;
   --rh-bg-light: #FFF3E0;
@@ -20,11 +20,11 @@
   --rh-text-dark-main: #f5eee8;
   --rh-text-dark-dim: #a59f97;
   --rh-accent: #388E3C;
-  --rh-card-shadow-light: 0 2px 9px #ed6c0233;
-  --rh-card-shadow-dark: 0 2.5px 11px #150e0733;
-  --rh-card-hover-shadow-light: 0 6px 18px #ff704335;
+  --rh-card-shadow-light: 0 2px 9px #e91e6330;
+  --rh-card-shadow-dark: 0 2.5px 11px #13020e33;
+  --rh-card-hover-shadow-light: 0 6px 18px #e91e6335;
   --rh-card-hover-shadow-dark: 0 10px 18px #2e482233;
-  --rh-focus-shadow: 0 4px 16px #388e3c25;
+  --rh-focus-shadow: 0 4px 16px #e91e6320;
 }
 
 /* Theme mode toggler. Add .rh-theme-dark or .rh-theme-light to <html> or main container */
@@ -290,7 +290,7 @@
   gap: 0.5rem;
   background: var(--rh-nav);
   border-top: 2px solid var(--rh-primary);
-  box-shadow: 0 -1px 12px #ff704330;
+  box-shadow: 0 -1px 12px #e91e6330;
   padding: 0.27rem 0 0.3rem 0;
   height: 56px;
 }
@@ -341,7 +341,7 @@
 }
 
 .rh-theme-dark .rh-nav-item .material-symbols-outlined {
-  color: #eca074;
+  color: #F06292;
 }
 .rh-theme-dark .rh-nav-active,
 .rh-theme-dark .rh-nav-item:active,
