@@ -51,8 +51,9 @@ html, body {
   box-sizing: border-box;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding-left: 0;
-  padding-right: 0;
+  /* Remove forced zero padding for grid; allow custom grid horizontal padding */
+  padding-left: unset;
+  padding-right: unset;
 }
 
 .rh-header {
@@ -61,10 +62,11 @@ html, body {
   padding-right: 0;
 }
 
-/* Recipe grid padding only on Y axis, not left/right */
+/* Recipe grid: explicit responsive horizontal padding (ALWAYS keeps cards away from screen edge) */
 .rh-recipe-grid {
-  padding-left: 0.5vw;
-  padding-right: 0.5vw;
+  /* Padding top,bottom,left,right: 1rem 5vw 4.2rem 5vw (5vw = min 24px at mobile, 60px+ on desktop) */
+  padding: 1rem 5vw 4.2rem 5vw !important;
+  /* Use !important to override resets above and ensure padding always applies */
 }
 
 /* Categories strip aligns fully */
