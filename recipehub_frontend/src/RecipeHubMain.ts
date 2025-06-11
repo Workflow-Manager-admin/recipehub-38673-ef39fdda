@@ -116,30 +116,71 @@ export function renderRecipeHubMain(targetSelector: string = "#app") {
  * Uses Unsplash placeholders for demonstration.
  */
 function mockRecipeCards(count: number): string {
-  // Example recipe image URLs for visual variety (replace with real sources when available)
-  const placeholderImages = [
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1519864600265-abb2349b6cef?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1514512364185-4c2b678fa1de?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80"
+  // A themed, unique Unsplash/stock image for each mock recipe.
+  const mockRecipes = [
+    {
+      title: "Classic Pancakes",
+      img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
+      category: "Breakfast",
+      rating: 4.7,
+    },
+    {
+      title: "Healthy Avocado Toast",
+      img: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80",
+      category: "Healthy",
+      rating: 4.8,
+    },
+    {
+      title: "Cheesy Oven Pizza",
+      img: "https://images.unsplash.com/photo-1519864600265-abb2349b6cef?auto=format&fit=crop&w=400&q=80",
+      category: "Lunch",
+      rating: 4.6,
+    },
+    {
+      title: "Sizzling Grilled Steak",
+      img: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80",
+      category: "Dinner",
+      rating: 4.9,
+    },
+    {
+      title: "Decadent Chocolate Cake",
+      img: "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=400&q=80",
+      category: "Desserts",
+      rating: 4.5,
+    },
+    {
+      title: "Colorful Vegan Salad",
+      img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80",
+      category: "Vegan",
+      rating: 4.7,
+    },
+    {
+      title: "Crispy Chicken Bites",
+      img: "https://images.unsplash.com/photo-1514512364185-4c2b678fa1de?auto=format&fit=crop&w=400&q=80",
+      category: "Snacks",
+      rating: 4.4,
+    },
+    {
+      title: "Rainbow Fruit Bowl",
+      img: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80",
+      category: "Healthy",
+      rating: 4.6,
+    }
   ];
   let grid = "";
-  for (let i = 1; i <= count; i++) {
-    const imgUrl = placeholderImages[(i - 1) % placeholderImages.length];
+  // Loop up to the requested count, repeating recipes if needed, but all have themed images.
+  for (let i = 0; i < count; i++) {
+    const rec = mockRecipes[i % mockRecipes.length];
     grid += `
       <div class="rh-recipe-card" tabindex="0">
         <div class="rh-recipe-image-container">
-          <img src="${imgUrl}" alt="Delicious recipe presentation" class="rh-recipe-img" />
+          <img src="${rec.img}" alt="Recipe: ${rec.title}" class="rh-recipe-img" />
         </div>
         <div class="rh-recipe-info">
-          <h3>Recipe Title ${i}</h3>
+          <h3>${rec.title}</h3>
           <div class="rh-meta">
-            <span>⭐ 4.${i % 5}</span>
-            <span class="rh-category-label">Category</span>
+            <span>⭐ ${rec.rating.toFixed(1)}</span>
+            <span class="rh-category-label">${rec.category}</span>
           </div>
         </div>
       </div>
