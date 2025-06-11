@@ -15,6 +15,7 @@ html, body {
   min-height: 100vh;
   height: 100%;
   overflow-x: hidden;
+  position: relative;              /* Prevents unwanted body collapse, ensures flow starts at top */
 }
 
 /* Ensure #app resets width/height and has no padding/margin */
@@ -57,16 +58,26 @@ html, body {
 }
 
 .rh-header {
-  /* Retain padding at top for spatial structure, but reset left/right */
-  padding-left: 0;
-  padding-right: 0;
+  /* Give clear space above header: force at least 1.5rem padding top, 1rem bottom, but zero left/right */
+  padding: 1.5rem 0 1rem 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background: var(--rh-primary);
+  color: var(--rh-header-text);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  min-height: 64px;              /* Ensure header never compresses too small */
+  box-sizing: border-box;
 }
 
 /* Recipe grid: explicit responsive horizontal padding (ALWAYS keeps cards away from screen edge) */
 .rh-recipe-grid {
-  /* Padding top,bottom,left,right: 1rem 5vw 4.2rem 5vw (5vw = min 24px at mobile, 60px+ on desktop) */
-  padding: 1rem 5vw 4.2rem 5vw !important;
-  /* Use !important to override resets above and ensure padding always applies */
+  /* Padding top, right/left (vw = responsive), bottom to leave space above nav */
+  padding: 1rem 5vw 4.2rem 5vw;
+  box-sizing: border-box;
 }
 
 /* Categories strip aligns fully */
@@ -78,6 +89,7 @@ html, body {
 /* Ensure no whitespace at very top/bottom on mobile or desktop */
 body, html {
   background: var(--rh-bg-gradient);
+  padding-top: 0 !important; /* Do not allow accidental extra top padding */
 }
 
 /* Further fix for mobile browsers "safe area"/scrollbar overlays (prevents gap on the right) */
@@ -287,6 +299,9 @@ body {
   overflow-x: auto;
   padding: 0.7rem 0.5rem 0 0.5rem;
   margin-bottom: 0.5rem;
+  box-sizing: border-box;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 .rh-categories-scroll {
   display: flex;

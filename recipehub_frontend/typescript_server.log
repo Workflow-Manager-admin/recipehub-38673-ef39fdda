@@ -3,8 +3,12 @@
 > vite dev --host 0.0.0.0 --port 3000
 
 
-  VITE v6.2.5  ready in 213 ms
+  VITE v6.2.5  ready in 208 ms
 
   ➜  Local:   http://localhost:3000/
   ➜  Network: http://172.17.0.2:3000/
-2:25:48 PM [vite] (client) page reload src/RecipeHubMain.ts
+2:44:23 PM [vite] (client) hmr update /src/recipehub-main.css
+2:44:27 PM [vite] (client) hmr update /src/recipehub-main.css
+2:44:31 PM [vite] (client) hmr update /src/recipehub-main.css
+2:44:32 PM [vite] (client) hmr update /src/recipehub-main.css
+2:44:34 PM [vite] (client) hmr update /src/recipehub-main.css
