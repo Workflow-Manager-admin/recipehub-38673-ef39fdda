@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import "./style.css";
 
 /**
@@ -6,15 +7,52 @@ import "./style.css";
  * Theme: Light | Primary: #FF7043 | Secondary: #FFF3E0 | Accent: #388E3C
  */
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Renders the main RecipeHub container.
+ * Supports dynamic switching between light and dark themes.
+ * @param targetSelector DOM selector string (defaults to "#app").
+ */
 export function renderRecipeHubMain(targetSelector: string = "#app") {
   const root = document.querySelector(targetSelector);
   if (!root) return;
+
+  // Determine user's preferred theme from localStorage or system
+  const getPreferredTheme = (): "light" | "dark" => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("recipehub-theme");
+      if (stored === "dark" || stored === "light") return stored as "dark" | "light";
+      // Fallback to prefers-color-scheme
+      return (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+    return "light";
+  };
+
+  let theme: "light" | "dark" = getPreferredTheme();
+
+  function updateRootThemeClass(theme: "light" | "dark") {
+    document.documentElement.classList.remove("rh-theme-light", "rh-theme-dark");
+    document.documentElement.classList.add(`rh-theme-${theme}`);
+  }
+  // Set theme class to root at load
+  updateRootThemeClass(theme);
+
+  // Theme Toggle Button markup
+  function themeToggleMarkup() {
+    // Uses aria-pressed for accessibility
+    return `
+      <button class="rh-theme-toggle" aria-label="Toggle dark/light mode" aria-pressed="${theme === "dark"}">
+        <span class="material-symbols-outlined" aria-hidden="true">${theme === "dark" ? "light_mode" : "dark_mode"}</span>
+        <span class="rh-theme-toggle-text">${theme === "dark" ? "Light" : "Dark"} Mode</span>
+      </button>
+    `;
+  }
 
   root.innerHTML = `
     <div class="rh-container">
       <header class="rh-header">
         <h1>RecipeHub</h1>
+        <div class="rh-theme-toggle-wrapper">${themeToggleMarkup()}</div>
       </header>
       <div class="rh-search-bar">
         <input type="text" placeholder="Search recipes, ingredients, or categories..." />
@@ -52,7 +90,25 @@ export function renderRecipeHubMain(targetSelector: string = "#app") {
     </div>
   `;
 
-  // Add event listeners for further feature expansion here...
+  // Theme toggle button logic
+  const themeToggleBtn = root.querySelector(".rh-theme-toggle") as HTMLButtonElement;
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      theme = (theme === "light" ? "dark" : "light");
+      themeToggleBtn.setAttribute("aria-pressed", String(theme === "dark"));
+      // Persist selection
+      localStorage.setItem("recipehub-theme", theme);
+      // Update :root CSS class
+      updateRootThemeClass(theme);
+      // Swap toggle button icon/text visually
+      themeToggleBtn.innerHTML = `
+        <span class="material-symbols-outlined" aria-hidden="true">${theme === "dark" ? "light_mode" : "dark_mode"}</span>
+        <span class="rh-theme-toggle-text">${theme === "dark" ? "Light" : "Dark"} Mode</span>
+      `;
+    });
+  }
+
+  // Add other (future) event listeners here...
 }
 
 /**

@@ -1,5 +1,77 @@
+/*--------------------*/
+/* RecipeHub Theme    */
+/*--------------------*/
+
+/* Light/dark theme root variable definitions */
+:root {
+  --rh-primary: #FF7043;
+  --rh-primary-dark: #ff8962;
+  --rh-secondary: #FFF3E0;
+  --rh-secondary-dark: #2c2723;
+  --rh-bg-light: #FFF3E0;
+  --rh-bg-dark: #23201d;
+  --rh-surface-light: #fff;
+  --rh-surface-dark: #2e2924;
+  --rh-nav-light: #fff;
+  --rh-nav-dark: #1b1815;
+  --rh-inactive: #f3f3f3;
+  --rh-text-main: #213547;
+  --rh-text-dim: #656977;
+  --rh-text-dark-main: #f5eee8;
+  --rh-text-dark-dim: #a59f97;
+  --rh-accent: #388E3C;
+  --rh-card-shadow-light: 0 2px 9px #ed6c0233;
+  --rh-card-shadow-dark: 0 2.5px 11px #150e0733;
+  --rh-card-hover-shadow-light: 0 6px 18px #ff704335;
+  --rh-card-hover-shadow-dark: 0 10px 18px #2e482233;
+  --rh-focus-shadow: 0 4px 16px #388e3c25;
+}
+
+/* Theme mode toggler. Add .rh-theme-dark or .rh-theme-light to <html> or main container */
+.rh-theme-light, .rh-theme-light body {
+  --rh-bg: var(--rh-bg-light);
+  --rh-surface: var(--rh-surface-light);
+  --rh-nav: var(--rh-nav-light);
+  --rh-card-shadow: var(--rh-card-shadow-light);
+  --rh-card-hover-shadow: var(--rh-card-hover-shadow-light);
+  --rh-header-text: #fff;
+  --rh-text: var(--rh-text-main);
+  --rh-meta: var(--rh-primary);
+  --rh-category-bg: var(--rh-secondary);
+  --rh-category-color: var(--rh-primary);
+  --rh-category-border: var(--rh-primary);
+  --rh-category-label-bg: var(--rh-secondary);
+  --rh-category-label-border: var(--rh-primary);
+  --rh-input-bg: #fff;
+  --rh-input-color: var(--rh-text-main);
+  --rh-search-btn-bg: var(--rh-primary);
+  --rh-search-btn-color: #fff;
+}
+.rh-theme-dark, .rh-theme-dark body {
+  --rh-bg: var(--rh-bg-dark);
+  --rh-surface: var(--rh-surface-dark);
+  --rh-nav: var(--rh-nav-dark);
+  --rh-card-shadow: var(--rh-card-shadow-dark);
+  --rh-card-hover-shadow: var(--rh-card-hover-shadow-dark);
+  --rh-header-text: #fffde0;
+  --rh-text: var(--rh-text-dark-main);
+  --rh-meta: var(--rh-primary-dark);
+  --rh-category-bg: var(--rh-secondary-dark);
+  --rh-category-color: var(--rh-primary-dark);
+  --rh-category-border: var(--rh-primary-dark);
+  --rh-category-label-bg: var(--rh-secondary-dark);
+  --rh-category-label-border: var(--rh-primary-dark);
+  --rh-input-bg: #2a221b;
+  --rh-input-color: var(--rh-text-dark-main);
+  --rh-search-btn-bg: var(--rh-primary-dark);
+  --rh-search-btn-color: #21201a;
+}
+
+/*--------------------*/
+
+
 .rh-container {
-  background: #FFF3E0;
+  background: var(--rh-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,42 +81,86 @@
 
 .rh-header {
   padding: 1.5rem 1rem 1rem 1rem;
-  background: #FF7043;
-  color: #fff;
+  background: var(--rh-primary);
+  color: var(--rh-header-text);
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
 }
-
 .rh-header h1 {
   font-weight: 700;
   font-size: 2rem;
   margin: 0;
   letter-spacing: 1px;
+  color: inherit;
+}
+.rh-theme-toggle-wrapper {
+  display: flex;
+  align-items: center;
+}
+.rh-theme-toggle {
+  padding: 0.24em 0.8em 0.24em 0.6em;
+  display: flex;
+  align-items: center;
+  gap: 0.32em;
+  border-radius: 24px;
+  border: 0;
+  background: transparent;
+  color: #fffce3;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.17s;
+  outline: none;
+  box-shadow: none;
+  position: relative;
+}
+.rh-theme-toggle .material-symbols-outlined {
+  font-size: 1.3em;
+  margin-right: 0.17em;
+}
+.rh-theme-toggle:hover, .rh-theme-toggle:focus-visible {
+  background: #fff2;
+  color: #ffe5c5;
+}
+.rh-theme-dark .rh-header,
+.rh-theme-dark .rh-theme-toggle {
+  color: #ffe5c5;
+}
+.rh-theme-dark .rh-theme-toggle:hover, .rh-theme-dark .rh-theme-toggle:focus-visible {
+  color: #fffde0;
+  background: #fff1;
 }
 
 .rh-search-bar {
   display: flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: #FFF;
+  background: var(--rh-surface);
   border-radius: 1.5rem;
   margin: 1rem auto 0.5rem auto;
   max-width: 600px;
-  box-shadow: 0 2px 8px #ed6c0219;
+  box-shadow: 0 2px 8px var(--rh-card-shadow);
 }
-
 .rh-search-bar input[type="text"] {
   flex: 1;
   border: none;
   padding: 0.75em;
   font-size: 1rem;
   outline: none;
-  background: transparent;
-  color: #213547;
+  background: var(--rh-input-bg);
+  color: var(--rh-input-color);
+  border-radius: 0.7em;
 }
-
+.rh-search-bar input[type="text"]::placeholder {
+  color: var(--rh-text-dim);
+  opacity: 1;
+}
 .rh-search-btn {
-  background: #FF7043;
-  color: #fff;
+  background: var(--rh-search-btn-bg);
+  color: var(--rh-search-btn-color);
   border: none;
   border-radius: 1.2em;
   padding: 0.45rem 0.7rem;
@@ -54,8 +170,10 @@
   align-items: center;
   transition: background 0.2s;
 }
-.rh-search-btn:hover {
-  background: #388E3C;
+.rh-search-btn:hover, .rh-search-btn:focus {
+  background: var(--rh-accent);
+  color: #fff;
+  outline: none;
 }
 
 .rh-categories {
@@ -68,9 +186,9 @@
   gap: 0.7rem;
 }
 .rh-category {
-  background: #FFF3E0;
-  border: 1px solid #FF7043;
-  color: #FF7043;
+  background: var(--rh-category-bg);
+  border: 1px solid var(--rh-category-border);
+  color: var(--rh-category-color);
   border-radius: 100px;
   padding: 0.4rem 1rem;
   font-size: 1rem;
@@ -78,8 +196,8 @@
   transition: background 0.15s, color 0.15s;
 }
 .rh-category:hover, .rh-category.selected {
-  background: #FF7043;
-  color: #fff;
+  background: var(--rh-category-color);
+  color: var(--rh-category-bg);
 }
 
 .rh-recipe-grid {
@@ -91,21 +209,21 @@
 }
 
 .rh-recipe-card {
-  background: #fff;
+  background: var(--rh-surface);
   border-radius: 14px;
-  box-shadow: 0 2px 9px #ed6c0233;
+  box-shadow: var(--rh-card-shadow);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.11s;
+  transition: transform 0.11s, box-shadow 0.15s;
   outline: none;
   display: flex;
   flex-direction: column;
+  color: var(--rh-text);
 }
 .rh-recipe-card:active, .rh-recipe-card:focus {
   transform: scale(0.98);
-  box-shadow: 0 4px 16px #388e3c25;
+  box-shadow: var(--rh-focus-shadow);
 }
-/* Prominent image at the top of recipe card */
 .rh-recipe-image-container {
   width: 100%;
   height: 145px;
@@ -113,8 +231,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #FFF3E0;
-  border-bottom: 1.5px solid #ffe1cb;
+  background: var(--rh-category-bg);
+  border-bottom: 1.5px solid var(--rh-category-label-border);
   position: relative;
 }
 .rh-recipe-img {
@@ -123,11 +241,12 @@
   object-fit: cover;
   display: block;
   transition: transform 0.18s;
+  border-radius: 0;
 }
 .rh-recipe-card:hover .rh-recipe-img,
 .rh-recipe-card:focus .rh-recipe-img {
   transform: scale(1.04) rotate(-1deg);
-  box-shadow: 0 6px 18px #ff704335;
+  box-shadow: var(--rh-card-hover-shadow);
 }
 .rh-recipe-info {
   padding: 0.7rem 1rem 0.7rem 1rem;
@@ -135,28 +254,30 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: var(--rh-text);
 }
 .rh-recipe-info h3 {
   margin: 0 0 0.3rem 0;
   font-weight: 500;
   font-size: 1.07rem;
+  color: inherit;
 }
 .rh-meta {
   font-size: 0.94rem;
-  color: #FF7043;
+  color: var(--rh-meta);
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 .rh-category-label {
-  background: #FFF3E0;
+  background: var(--rh-category-label-bg);
   border-radius: 7px;
   padding: 0.08em 0.65em;
   font-size: 0.9em;
-  border: 1px solid #FF7043;
+  border: 1px solid var(--rh-category-label-border);
+  color: var(--rh-meta);
 }
 
-/* Bottom Navigation Bar */
 .rh-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -167,8 +288,8 @@
   display: flex;
   justify-content: space-evenly;
   gap: 0.5rem;
-  background: #fff;
-  border-top: 2px solid #FF7043;
+  background: var(--rh-nav);
+  border-top: 2px solid var(--rh-primary);
   box-shadow: 0 -1px 12px #ff704330;
   padding: 0.27rem 0 0.3rem 0;
   height: 56px;
@@ -181,7 +302,7 @@
   border: none;
   background: none;
   padding: 0.2rem 0;
-  color: #FF7043;
+  color: var(--rh-primary);
   font-size: 1rem;
   font-weight: 500;
   transition: color 0.16s;
@@ -190,7 +311,7 @@
 .rh-nav-active,
 .rh-nav-item:active,
 .rh-nav-item:focus {
-  color: #388E3C;
+  color: var(--rh-accent);
 }
 .rh-nav-item .material-symbols-outlined {
   font-size: 1.6rem;
@@ -212,7 +333,25 @@
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 
-/* Responsive */
+.rh-theme-dark .rh-recipe-card,
+.rh-theme-dark .rh-search-bar,
+.rh-theme-dark .rh-category,
+.rh-theme-dark .rh-bottom-nav {
+  box-shadow: none;
+}
+
+.rh-theme-dark .rh-nav-item .material-symbols-outlined {
+  color: #eca074;
+}
+.rh-theme-dark .rh-nav-active,
+.rh-theme-dark .rh-nav-item:active,
+.rh-theme-dark .rh-nav-item:focus {
+  color: var(--rh-accent);
+}
+.rh-theme-dark .rh-search-btn {
+  color: #21201a;
+}
+
 @media (max-width: 600px) {
   .rh-recipe-grid {grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));}
   .rh-header h1 {font-size: 1.33rem;}

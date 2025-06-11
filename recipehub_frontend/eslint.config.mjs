@@ -38,6 +38,8 @@ export default [
     languageOptions: {
       globals: {
         document: "readonly",
+        window: "readonly",
+        localStorage: "readonly",
       },
     },
   },
